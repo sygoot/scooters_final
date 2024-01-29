@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dostępne Hulajnogi</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+    <style>
+                .scooter-card {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        .scooter-list {
+            list-style-type: none;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+        .scooter-list:hover {
+            background-color: #f1f1f1;
+        }
+        .scooter-details {
+            margin-bottom: 10px;
+        }
+        .scooter-image img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <div class="scooter-card">
+        <h2 class="text-center mb-3 mt-0">Dostępne Hulajnogi</h2>
+        <ul>
+            <li th:each="scooter : ${availableScooters}" class="scooter-list">
+                <div class="scooter-details">
+                    <p th:text="'Id: ' + ${scooter.id}"></p>
+                    <p th:text="'Marka: ' + ${scooter.vehicleType.brand}"></p>
+                    <p th:text="'Model: ' + ${scooter.vehicleType.model}"></p>
+                    <p th:text="'Zasięg: ' + ${scooter.vehicleRange} + 'km'"></p>
+                </div>
+                <div class="scooter-image">
+                    <img src="" th:src="@{/img/{modelName}.jpg(modelName=${scooter.vehicleType.model})}" alt="Model Image">
+                </div>
+                <div class="scooter-actions">
+                    <form th:action="@{/api/rentals/rent}" method="post">
+                        <input type="hidden" th:value="${scooter.id}" name="idVehicle" />
+                        <input type="hidden" th:value="${rentalPointId}" name="startRentalPointId" />
+                        <button class="btn" type="submit">Wypożycz</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

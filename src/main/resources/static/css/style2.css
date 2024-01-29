@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+body{
+    /*background: #fff;*/
+    font-family: 'PT Sans', sans-serif;
+    background-size: cover; /* dostosuj wielkość obrazka, aby wypełnić całe tło */
+    background-repeat: no-repeat;
+}
+
+h2{
+    padding-top: 0.5rem;
+}
+
+a{
+    color: #333;
+}
+a:hover{
+    color: #da5767;
+    text-decoration: none;
+}
+
+.card{
+    border: 0.40rem solid #f8f9fa;
+    top: 1%;
+}
+
+.card-body{
+    padding-top: 0%;
+
+}
+
+.form-control{
+    background-color: #f8f9fa;
+    padding: 20px;
+    padding: 20px 10px;
+    margin-bottom: 2px;
+}
+
+.form-control:focus {
+
+    color: #000000;
+    background-color: #ffffff;
+    border: 4px solid #da5767;
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-group{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.row{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.btn{
+    padding: 0.6rem 1.2rem;
+    background: #da5767;
+    border: 2px solid #da5767;
+}
+
+.btn:hover {
+
+    background-color: #df8c96;
+    border-color: #df8c96;
+    transition: .3s;
+}
+
+.btn-primary:hover {
+
+    background-color: #df8c96;
+    border-color: #df8c96;
+    transition: .3s;
+
+}
+
+.rental-point {
+    margin-bottom: 10px;
+}
+
+.rental-details {
+    margin-left: 20px;
+}
+
+summary {
+    cursor: pointer;
+    outline: none;
+}
+
+/* Ukrycie domyślnych strzałek rozwijania */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Stylowanie strzałek rozwijania dla innych przeglądarek */
+summary::before {
+    content: '▶'; /* Dowolny symbol lub ikona */
+    display: inline-block;
+    margin-right: 5px;
+}
+
+details[open] summary::before {
+    content: '▼'; /* Zmiana strzałki, gdy element jest otwarty */
+}
+
+.flexcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-inline: 4%;
+}
+
+.map-container {
+    margin-top: 100px;
+    width: 60%; /* Szerokość dla kontenera z mapą */
+}
+
+.form-container {
+    margin-top: 200px;
+    width: 30%; /* Szerokość dla kontenera z formularzem */
+}
+select {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.scooter-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.scooter-list:hover {
+    background-color: #4d4b4b;
+    border-color: #4d4b4b;
+    transition: .3s;
+}
+.scooter-details {
+    width: 50%;
+}
+
+.scooter-image {
+    width: 40%;
+    text-align: center;
+}
+
+.scooter-image img {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.scooter-image img:hover {
+    transform: scale(1.2);
+}
+
+.scooter-actions {
+    width: 10%;
+}
+.scooter-card{
+
+    padding: 20px;
+    margin-top: 2%;
+    margin-inline: 4%;
+    border: 0.5rem solid #f1f1f3;
+    top: 1%;
+}
+.title-bar {
+    height: 3px;
+    background-color: #25272c; /* Kolor paska - można zmienić */
+    width:auto; /* Szerokość paska - można zmienić */
+    margin-bottom: 10px; /* Odległość od tekstu */
+}
+

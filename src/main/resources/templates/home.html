@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Vehicles Rental Service</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+    <th:block th:insert="~{fragments/common-resources :: head}"></th:block>
+    <style>
+        .custom-tile {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body th:style="'background: url(/img/logo.jpg) no-repeat center center fixed;'">
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container mt-4 text-center">
+    <h1>Welcome to Vehicle Rental Service!</h1>
+    <p>Explore our electric vehicles rental options.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+
+    <!-- Pierwszy rząd kafelków -->
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-4 mb-4">
+            <a href="/aboutUs" class="card custom-tile text-decoration-none p-4">
+                <span class="icon-circle icon-circle-lg">
+                    <i class="bi bi-info-circle"></i>
+                </span>
+                <span class="text-dark mt-3">O nas</span>
+            </a>
+        </div>
+
+        <!-- Przeglądaj punkty wynajmu -->
+        <div class="col-md-4 mb-4">
+            <a href="/api/rentals/rentalPoints" class="card custom-tile text-decoration-none p-4">
+                <span class="icon-circle icon-circle-lg">
+                    <i class="bi bi-geo-alt"></i>
+                </span>
+                <span class="text-dark mt-3">Przeglądaj punkty wynajmu</span>
+            </a>
+        </div>
+
+        <!-- Zaloguj się -->
+
+    </div>
+
+    <!-- Drugi rząd kafelków -->
+    <div class="row justify-content-center">
+        <!-- Zarejestruj się -->
+        <div class="col-md-4 mb-4">
+            <a href="/register" class="card custom-tile text-decoration-none p-4">
+                <span class="icon-circle icon-circle-lg">
+                    <i class="bi bi-pencil-square"></i>
+                </span>
+                <span class="text-dark mt-3">Zarejestruj się</span>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="/login" class="card custom-tile text-decoration-none p-4">
+                <span class="icon-circle icon-circle-lg">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                </span>
+                <span class="text-dark mt-3">Zaloguj się</span>
+            </a>
+        </div>
+        <!-- O nas -->
+
+    </div>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

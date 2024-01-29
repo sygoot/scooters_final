@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Pojazd</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+    <th:block th:insert="~{fragments/common-resources :: head}"></th:block>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container my-5">
+    <h2>Dodaj Pojazd</h2>
+    <form th:action="@{/api/vehicles/addVehicles}" th:object="${vehicle}" method="post">
+        <div class="form-group">
+            <label for="vehicleType">Typ Pojazdu:</label>
+            <select id="vehicleType" th:field="*{vehicleType}" class="form-control">
+                <option th:each="vehicleType : ${vehicleTypes}"
+                        th:value="${vehicleType.idModel}"
+                        th:text="${vehicleType.brand} + ' ' + ${vehicleType.model}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="rentalPoint">Punkt Wynajmu:</label>
+            <select id="rentalPoint" th:field="*{rentalPoint}" class="form-control">
+                <option th:each="rentalPoint : ${rentalPoints}"
+                        th:value="${rentalPoint.id}"
+                        th:text="${rentalPoint.id} + ', ' + ${rentalPoint.name} + ', ' + ${rentalPoint.address.city} + ' ' + ${rentalPoint.address.street}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}" class="form-control">
+                <option th:each="status : ${T(com.Hulajnogi.App.enums.VehicleStatus).values()}"
+                        th:value="${status}"
+                        th:text="${status}">
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="vehicleRange">Zasięg (km):</label>
+            <input type="number" id="vehicleRange" th:field="*{vehicleRange}" class="form-control" min="0"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj Pojazd</button>
+    </form>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

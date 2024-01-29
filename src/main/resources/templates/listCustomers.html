@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Klientów</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style2.css}">
+  <th:block th:insert="~{fragments/common-resources :: head}"></th:block>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container my-5">
+  <h2 class="text-center">Lista Klientów</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th>Email</th>
+      <!-- Dodatkowe kolumny jeśli potrzebne -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}" th:onclick="'window.location.href=\'/api/employee/details/' + ${customer.idCustomer} + '\''">
+      <td th:text="${customer.idCustomer}"></td>
+      <td th:text="${customer.user.firstName}"></td>
+      <td th:text="${customer.user.lastName}"></td>
+      <td th:text="${customer.user.email}"></td>
+      <!-- Dodatkowe pola -->
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

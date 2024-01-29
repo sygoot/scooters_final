@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista Pojazdów</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style2.css}">
+  <style>
+        .table-hover tbody tr:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container my-4">
+  <h2 class="text-center mb-4">Lista Pojazdów</h2>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Marka</th>
+          <th>Model</th>
+          <th>Status</th>
+          <th>Zasięg</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vehicle : ${vehicles}" th:onclick="'location.href=\'/api/vehicles/details/' + ${vehicle.id} + '\''">
+          <td th:text="${vehicle.id}"></td>
+          <td th:text="${vehicle.vehicleType.brand}"></td>
+          <td th:text="${vehicle.vehicleType.model}"></td>
+          <td th:text="${vehicle.status}"></td>
+          <td th:text="${vehicle.vehicleRange}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

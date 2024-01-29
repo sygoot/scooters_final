@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodaj Pojazd</title>
+
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<h2>Dodaj Pojazd</h2>
+<form th:action="@{/api/vehicles/addScooter}" method="post" th:object="${vehicleAddDto}">
+    <label for="brand">Marka:</label>
+    <input type="text" id="brand" th:field="*{brand}" required><br>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" th:field="*{model}" required><br>
+
+    <label for="vehicleType">Typ Pojazdu:</label>
+    <select id="vehicleType" th:field="*{vehicleType}" required>
+        <option th:each="type : ${T(com.Hulajnogi.App.enums.ScooterType).values()}"
+                th:value="${type}" th:text="${type}"></option>
+    </select><br>
+
+    <label for="capacity">Pojemność:</label>
+    <input type="number" id="capacity" th:field="*{capacity}" required><br>
+
+    <label for="price">Cena:</label>
+    <input type="number" id="price" th:field="*{price}" required><br>
+
+    <label for="status">Status:</label>
+    <select id="status" th:field="*{status}" required>
+        <option th:each="status : ${T(com.Hulajnogi.App.enums.VehicleStatus).values()}"
+                th:value="${status}" th:text="${status}"></option>
+    </select><br>
+
+    <label for="vehicleRange">Zasięg:</label>
+    <input type="number" id="vehicleRange" th:field="*{vehicleRange}" required><br>
+
+    <button type="submit">Dodaj</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rejestracja Użytkownika</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card">
+                <h2 class="card-title text-center">Zarejestruj Się </h2>
+                <div class="card-body">
+                    <form  th:action="@{/register}"  method="post" th:object="${registrationDto}">
+
+                        <h4 class="text-center mb-3 mt-0">Dane Osobowe</h4>
+                        <div class="row">
+                            <div class="form-group col-md-6 float-left">
+                                <input type="text" class="form-control" id="firstName" placeholder="Imie" th:field="*{firstName}" required><br>
+                            </div>
+
+                            <div class="form-group  col-md-6 ml-auto">
+                                <input type="text" class="form-control" id="lastName"placeholder="Nazwisko" th:field="*{lastName}" required><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6 float-left">
+                                <input type="email" class="form-control" id="email" placeholder="Email" th:field="*{email}" required><br>
+                            </div>
+
+                            <div class="form-group  col-md-6 ml-auto">
+                                <input type="tel" class="form-control" id="phoneNumber" placeholder="Numer Telefonu" th:field="*{phoneNumber}"><br>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6  float-left">
+                                <input type="text" class="form-control" id="login" placeholder="Login" th:field="*{login}" required><br>
+                            </div>
+
+                            <div class="form-group  col-md-6  ml-auto">
+
+                                <input type="password" class="form-control" id="password" placeholder="Hasło" th:field="*{password}" required><br>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <input type="date" class="form-control" id="birthDate" placeholder="Data Urodzenia" th:field="*{birthDate}"><br>
+                        </div>
+
+
+
+
+                        <h4 class="text-center mb-3 mt-0">Adres</h4>
+
+                        <div class="row">
+                            <div class="form-group col-md-6 float-left">
+                                <input type="text" class="form-control" id="city" placeholder="Miasto" th:field="*{city}"><br>
+                            </div>
+
+                            <div class="form-group  col-md-6 ml-auto">
+                                <input type="text" class="form-control" id="street" placeholder="Ulica" th:field="*{street}"><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 float-left">
+                                <input type="number" class="form-control" id="huNumber" placeholder="Numer Domu" th:field="*{huNumber}"><br>
+                            </div>
+                            <div class="form-group  col-md-6 ml-auto">
+                                <input type="text" class="form-control" id="postalCode" placeholder="Kod pocztowy" th:field="*{postalCode}"><br>
+                            </div>
+                        </div>
+
+                        <h4 class="text-center mb-3 mt-0">Dane Klienta</h4>
+
+                        <div class="row">
+                            <div class="form-group col-md-6 float-left">
+                                <input type="text" class="form-control" id="drivingLicenseNumber" placeholder="Numer Prawa Jazdy" th:field="*{drivingLicenseNumber}"><br>
+                            </div>
+                            <div class="form-group  col-md-6 ml-auto">
+                                <input type="number" class="form-control" id="cardNumber" placeholder="Numer karty" th:field="*{cardNumber}"><br>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-3"> <!-- Wyśrodkowanie tekstu -->
+                            <p>Masz już konto? <a href="/login" class="text-primary">Zaloguj się</a></p> <!-- Link do logowania -->
+                        </div>
+                        <div class="d-flex flex-row justify-content-center"> <!-- Wyśrodkowanie przycisku -->
+                            <button class="btn btn-primary">Zarejestruj</button>
+                        </div>
+
+
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

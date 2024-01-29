@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>End Rental Summary</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"></header>
+<div class="container my-5">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="text-center">End Rental Summary</h1>
+    </div>
+    <div class="card-body">
+      <p>Rental ID: <span th:text="${summary.rental.id}"></span></p>
+      <p>Rental Start: <span th:text="${summary.rentalStartFormatted}"></span></p>
+      <p>Rental End: <span th:text="${summary.rentalEndFormatted}"></span></p>
+      <p>Rental Duration: <span th:text="${summary.rentalDurationFormatted}"></span></p>
+      <p>Price Per Minute: <span th:text="${summary.rentalPricePerMinute}"></span></p>
+      <p>Total Price: <span th:text="${summary.totalPrice}"></span></p>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <form th:action="@{/api/rentals/selectRentalPoint}" method="get">
+      <button type="submit" class="btn btn-primary">Wynajmij ponownie</button>
+    </form>
+    <form th:action="@{/dashboard}" method="get" class="mt-2">
+      <button type="submit" class="btn btn-success">Strona Główna</button>
+    </form>
+  </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rejestracja zakończona sukcesem</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-7 mt-5">
+      <div class="card">
+        <h2 class="card-title text-center">Rejestracja zakończona sukcesem!</h2>
+        <div class="card-body py-md-4">
+
+
+          <h4 class="text-center mb-3 mt-0">Konto pracownika zostało pomyślnie utworzone.</h4>
+
+          <div class="text-center mt-4">
+            <a href="/dashboard" class="btn btn-dark btn-lg text-white">Powrót do dashboardu</a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

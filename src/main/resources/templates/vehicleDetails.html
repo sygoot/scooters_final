@@ -1,0 +1,71 @@
+  <!DOCTYPE html>
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Szczegóły Pojazdu</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+  <div th:insert="~{fragments/header :: header}"></div>
+
+  <div class="container my-5">
+    <div class="card">
+      <div class="card-header text-center">
+        <h2>Szczegóły Pojazdu</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="vehicle-details">
+              <h4>Dane Pojazdu:</h4>
+              <p>ID: <span th:text="${vehicle.id}"></span></p>
+              <p>Marka: <span th:text="${vehicle.vehicleType.brand}"></span></p>
+              <p>Model: <span th:text="${vehicle.vehicleType.model}"></span></p>
+              <p>Status: <span th:text="${vehicle.status}"></span></p>
+              <p>Zasięg: <span th:text="${vehicle.vehicleRange}"></span> km</p>
+
+              <p>Aktualny status: <span th:text="${vehicle.status}"></span></p>
+              <h4 class="mt-4">Zmień Status:</h4>
+              <form th:action="@{/api/vehicles/updateStatus}" method="post">
+                <input type="hidden" th:value="${vehicle.id}" name="vehicleId" />
+                <select name="newStatus" class="form-control mb-3">
+                  <option value="AVAILABLE" th:selected="${vehicle.status == 'AVAILABLE'}">Dostępny</option>
+                  <option value="IN_USE" th:selected="${vehicle.status == 'IN_USE'}">W Użyciu</option>
+                  <option value="UNDER_MAINTENANCE" th:selected="${vehicle.status == 'UNDER_MAINTENANCE'}">W Naprawie</option>
+                  <option value="OUT_OF_SERVICE" th:selected="${vehicle.status == 'OUT_OF_SERVICE'}">Wyłączony z Użytku</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Aktualizuj Status</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="vehicle-rentals">
+              <h4>Przejazdy Pojazdu:</h4>
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>ID Wynajmu</th>
+                  <th>Data Startu</th>
+                  <th>Data Zakończenia</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="rental : ${vehicleRentals}">
+                  <td th:text="${rental.id}"></td>
+                  <td th:text="${#temporals.format(rental.rentalStart, 'dd/MM/yyyy HH:mm')}"></td>
+                  <td th:text="${#temporals.format(rental.rentalEnd, 'dd/MM/yyyy HH:mm')}"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div th:insert="~{fragments/footer :: footer}"></div>
+  </body>
+  </html>

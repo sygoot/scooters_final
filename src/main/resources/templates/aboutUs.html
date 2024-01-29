@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Nas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Dodajmy styl do ramki */
+    .about-us {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container">
+  <h2 class="text-center">O Nas</h2>
+  <div class="about-us">
+    <p>
+      Jesteśmy wypożyczalnią z pasją do zrównoważonego transportu. Naszym celem jest wprowadzenie ekologicznych rozwiązań w dziedzinie mobilności. Chcemy dostarczyć naszym klientom dostęp do nowoczesnych i ekologicznych środków transportu, które pomogą chronić środowisko naturalne.
+    </p>
+    <p>
+      Nasza flota pojazdów to wyłącznie pojazdy elektryczne i rowery elektryczne. Dzięki nim możesz podróżować komfortowo, jednocześnie dbając o czystość powietrza i redukując emisję szkodliwych substancji. Wybierając naszą wypożyczalnię, wspierasz ideę zielonej mobilności i pomagasz tworzyć lepsze środowisko.
+    </p>
+    <p>
+      Dołącz do naszej społeczności i przekonaj się, że zielony transport może być nie tylko ekologiczny, ale także wygodny i dostępny dla każdego. Razem zmieniamy przyszłość mobilności i chronimy planetę.
+    </p>
+  </div>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

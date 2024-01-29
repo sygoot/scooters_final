@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wynajem hulajnogi</title>
+
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<form th:action="@{/api/rentals/rent}" th:object="${rentalRequest}" method="post">
+    <input type="text" th:field="*{idVehicle}" placeholder="ID pojazdu" />
+    <input type="text" th:field="*{idUser}" placeholder="ID użytkownika" />
+    <button type="submit">Wynajmij hulajnogę</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Moje Konto</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+    <th:block th:insert="~{fragments/common-resources :: head}"></th:block>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2>Moje Konto</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Dane Użytkownika</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Imię: <span th:text="${user.firstName}"></span></p>
+                            <p>Nazwisko: <span th:text="${user.lastName}"></span></p>
+                            <p>Email: <span th:text="${user.email}"></span></p>
+                            <p>Telefon: <span th:text="${user.phoneNumber}"></span></p>
+                            <div class="text-center mt-4">
+                                <a href="/editAccount" class="btn btn-primary">Edytuj dane</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Moje Wynajmy</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Liczba przejazdów: <span th:text="${totalRides}"></span></p>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID Wynajmu</th>
+                                    <th>Data Startu</th>
+                                    <th>Data Zakończenia</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="rental : ${rentals}">
+                                    <td th:text="${rental.id}"></td>
+                                    <td th:text="${#temporals.format(rental.rentalStart, 'dd/MM/yyyy HH:mm')}"></td>
+                                    <td th:text="${#temporals.format(rental.rentalEnd, 'dd/MM/yyyy HH:mm')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Scooters</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"> </header>
+<div class="container mt-5">
+    <h1 class="text-center">Moje Wynajmy</h1> <!-- Styl tekstu h1 dostosowany -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data Rozpoczęcia</th>
+            <th>Data Zakończenia</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Pętla wyświetlająca wynajmy -->
+        <tr th:each="rental : ${rentals}">
+            <td th:text="${{rental.id}}"></td>
+            <td th:text="${{rental.rentalStart}}"></td>
+            <td th:text="${{rental.rentalEnd}}"></td>
+            <td th:text="${{rental.status}}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:insert="~{fragments/footer :: footer}"> </div>
+</body>
+</html>

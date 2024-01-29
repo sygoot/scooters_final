@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Scooters - Podsumowanie Wypożyczenia</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"></header>
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center">Podsumowanie Wypożyczenia</h2>
+        </div>
+        <div class="card-body">
+            <p>ID Wypożyczenia: <span th:text="${rental.id}"></span></p>
+            <p>ID Użytkownika: <span th:text="${rental.user.id}"></span></p>
+            <p>ID Pojazdu: <span th:text="${rental.vehicle.id}"></span></p>
+            <p>Czas Rozpoczęcia: <span th:text="${#temporals.format(rental.rentalStart, 'HH:mm:ss')}"></span></p>
+            <p>Status: <span th:text="${rental.status}"></span></p>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <form th:action="@{/api/rentals/endRental}" method="post">
+            <input type="hidden" th:value="${rental.id}" name="rentalId"/>
+
+            <!-- Dodaj rozwijalną listę z punktami zwrotu hulajnogi -->
+            <label for="returnRentalPointId">Wybierz punkt zwrotu:</label>
+            <select id="returnRentalPointId" name="returnRentalPointId">
+                <option th:each="point : ${rentalPoints}"
+                        th:value="${point.id}"
+                        th:text="${point.name + ', ' + point.address.city + ', ' + point.address.street}"></option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Zakończ Wypożyczenie</button>
+        </form>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

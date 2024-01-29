@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Scooters</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+    <th:block th:insert="~{fragments/common-resources :: head}"></th:block>
+</head>
+<body>
+<header th:insert="~{fragments/header :: header}"> </header>
+<div class="container my-5">
+    <div class="card text-center border-0 shadow p-4 mb-4">
+        <div class="row mt-4 justify-content-center">
+            <div class="col-12 mb-4">
+                <h2 class="text-dark fw-normal"><strong>Dashboard</strong></h2>
+            </div>
+
+            <!-- Kafelki dla roli "Klient" -->
+            <div sec:authorize="hasAuthority('CUSTOMER')" class="col-md-3 mb-4">
+                <a th:href="@{/api/rentals/selectRentalPoint}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-arrow-right-square"></i>
+                    </span>
+                    <span class="text-dark mt-3">Wynajmij pojazd</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAuthority('CUSTOMER')" class="col-md-3 mb-4">
+                <a th:href="@{/myAccount}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    <span class="text-dark mt-3">Moje konto</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAuthority('CUSTOMER')" class="col-md-3 mb-4">
+                <a th:href="@{/api/rentals/rentalPoints}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-shop"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista punktów najmu</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAuthority('CUSTOMER')" class="col-md-3 mb-4">
+                <a th:href="@{/support}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-chat-dots"></i>
+                    </span>
+                    <span class="text-dark mt-3">Support</span>
+                </a>
+            </div>
+
+            <!-- Kafelki dla roli "Admin" -->
+            <div sec:authorize="hasAuthority('ADMIN')" class="col-md-3 mb-4">
+                <a th:href="@{/api/employee/listEmployees}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-people"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista pracowników</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAuthority('ADMIN')" class="col-md-3 mb-4">
+                <a th:href="@{/api/rentals/listRentals}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-list-check"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista wypożyczeń</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAuthority('ADMIN')" class="col-md-3 mb-4">
+                <a th:href="@{/api/rentals/rentalPoints}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-shop"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista punktów najmu</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAuthority('ADMIN')" class="col-md-3 mb-4">
+                <a th:href="@{/api/rentals/addRentalPoint}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-house-add"></i>
+                    </span>
+                    <span class="text-dark mt-3">Dodaj punkt wynajmu</span>
+                </a>
+            </div>
+<!--            <div sec:authorize="hasAuthority('ADMIN')" class="col-md-3 mb-4">-->
+<!--                <a th:href="@{/zlecTransport}" class="card align-items-center border-0 shadow text-decoration-none p-4">-->
+<!--                    <span class="icon-circle icon-circle-lg">-->
+<!--                        <i class="bi bi-truck"></i>-->
+<!--                    </span>-->
+<!--                    <span class="text-dark mt-3">Zleć transport</span>-->
+<!--                </a>-->
+<!--            </div>-->
+
+            <!-- Kafelki dla roli "Pracownik" -->
+            <div sec:authorize="hasAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/api/rentals/rentalPoints}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-shop"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista punktów najmu</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAnyAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/myTransports}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-truck"></i>
+                    </span>
+                    <span class="text-dark mt-3">Moje Transporty</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAnyAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/api/employee/listCustomers}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-people"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista Klientów</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAnyAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/api/vehicles/listVehicles}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-scooter"></i>
+                    </span>
+                    <span class="text-dark mt-3">Lista Pojazdów</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAnyAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/api/vehicleType/addModel}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-pencil"></i>
+                    </span>
+                    <span class="text-dark mt-3">Dodaj Model</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAnyAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/api/vehicles/addVehicles}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-plus-circle"></i>
+                    </span>
+                    <span class="text-dark mt-3">Dodaj Pojazd</span>
+                </a>
+            </div>
+            <div sec:authorize="hasAnyAuthority('EMPLOYEE')" class="col-md-3 mb-4">
+                <a th:href="@{/support}" class="card align-items-center border-0 shadow text-decoration-none p-4">
+                    <span class="icon-circle icon-circle-lg">
+                        <i class="bi bi-chat-dots"></i>
+                    </span>
+                    <span class="text-dark mt-3">Zgłoszenia support</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{fragments/footer :: footer}"> </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

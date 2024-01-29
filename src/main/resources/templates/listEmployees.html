@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Scooters</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="" th:href="@{/css/style2.css}">
+  <th:block th:insert="~{fragments/common-resources :: head}"></th:block>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container">
+  <h2 class="text-center">Lista Pracowników</h2>
+  <div th:each="employee : ${employees}" class="employee-card my-3 p-3 bg-light rounded shadow-sm">
+    <h3 th:text="${employee.user.firstName} + ' ' + ${employee.user.lastName}"></h3>
+    <p>Email: <span th:text="${employee.user.email}"></span></p>
+    <p>Stanowisko: <span th:text="${employee.position}"></span></p>
+    <p>Pensja: <span th:text="${employee.salary}"></span></p>
+  </div>
+</div>
+<div class="my-3 text-center">
+  <a href="/api/employee/registerEmployee" class="btn btn-primary" style="padding: 10px 20px;">Dodaj Pracownika</a>
+</div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div th:insert="~{fragments/footer :: footer}"> </div>
+</body>
+</html>
